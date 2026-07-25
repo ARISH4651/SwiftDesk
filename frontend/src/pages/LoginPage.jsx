@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Lock, Mail, Shield, Sparkles, UserCheck, KeyRound, AlertCircle } from 'lucide-react';
+import { Mail, Sparkles, KeyRound, AlertCircle } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
 export default function LoginPage() {
@@ -149,20 +149,6 @@ export default function LoginPage() {
               />
               <KeyRound size={16} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
             </div>
-          </div>
-
-          <div className="form-group" style={{ marginBottom: '20px' }}>
-            <label>Select Role</label>
-            <select
-              className="form-control"
-              value={role}
-              onChange={(e) => setRole(e.target.value)}
-              required
-            >
-              <option value="CUSTOMER">CUSTOMER (Customer Portal Only)</option>
-              <option value="SUPPORT">SUPPORT (Support Team Portal Only)</option>
-              <option value="ADMIN">ADMIN (Full Operations Access)</option>
-            </select>
           </div>
 
           <button
