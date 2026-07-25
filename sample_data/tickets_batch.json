@@ -1,0 +1,167 @@
+[
+  {
+    "external_ref": "batch-001",
+    "customer": { "customer_id": "CUST-1001", "name": "David Miller", "email": "david.m@example.com" },
+    "subject": "Password reset link not received",
+    "description": "I clicked forgot password 10 minutes ago but haven't received the link in my email yet. Can you help reset it?",
+    "category": "Account",
+    "priority": "High",
+    "channel": "web_app",
+    "created_at": "2026-07-25T08:00:00+05:30",
+    "metadata": { "platform": "Web" }
+  },
+  {
+    "external_ref": "batch-002",
+    "customer": { "customer_id": "CUST-1002", "name": "Elena Rostova", "email": "elena.r@example.com" },
+    "subject": "CRITICAL: Database production cluster down",
+    "description": "Entire payment gateway database is throwing 500 connection refused errors for all users! Production environment is completely down!",
+    "category": "Technical",
+    "priority": "Low",
+    "channel": "api",
+    "created_at": "2026-07-25T08:05:00+05:30",
+    "metadata": { "environment": "Production", "severity": "P0" }
+  },
+  {
+    "external_ref": "batch-003",
+    "customer": { "customer_id": "CUST-1003", "name": "Frank Wright", "email": "frank.w@example.com" },
+    "subject": "Unable to update profile picture",
+    "description": "When I upload my PNG avatar it says file format invalid even though it is a standard PNG.",
+    "category": "",
+    "priority": "",
+    "channel": "mobile_app",
+    "created_at": "2026-07-25T08:10:00+05:30",
+    "metadata": {}
+  },
+  {
+    "external_ref": "batch-004",
+    "customer": { "customer_id": "CUST-1004", "name": "Grace Hopper", "email": "grace.h@example.com" },
+    "subject": "Double billing on annual subscription",
+    "description": "My credit card was charged twice ($299 x 2) for the annual Pro subscription renewal on invoice #INV-9082.",
+    "category": "Technical",
+    "priority": "Medium",
+    "channel": "web_app",
+    "created_at": "2026-07-25T08:15:00+05:30",
+    "metadata": { "invoice_id": "INV-9082" }
+  },
+  {
+    "external_ref": "batch-005",
+    "customer": { "customer_id": "CUST-1004", "name": "Grace Hopper", "email": "grace.h@example.com" },
+    "subject": "Double billing on annual subscription",
+    "description": "My credit card was charged twice ($299 x 2) for the annual Pro subscription renewal on invoice #INV-9082.",
+    "category": "Billing",
+    "priority": "High",
+    "channel": "web_app",
+    "created_at": "2026-07-25T08:18:00+05:30",
+    "metadata": { "invoice_id": "INV-9082" }
+  },
+  {
+    "external_ref": "batch-006",
+    "customer": { "customer_id": "CUST-1005", "name": "Henry Zhang", "email": "henry.z@example.com" },
+    "subject": "System issue",
+    "description": "It broke.",
+    "category": "General",
+    "priority": "Low",
+    "channel": "web_app",
+    "created_at": "2026-07-25T08:20:00+05:30",
+    "metadata": {}
+  },
+  {
+    "external_ref": "batch-007",
+    "customer": { "customer_id": "CUST-1006", "name": "Isabella Garcia", "email": "isabella.g@example.com" },
+    "subject": "Error al procesar el pago de mi cuenta",
+    "description": "Hola, intenté pagar mi factura mensual pero el sistema muestra un error de tarjeta rechazada sin explicaciones.",
+    "category": "Billing",
+    "priority": "Medium",
+    "channel": "web_app",
+    "created_at": "2026-07-25T08:25:00+05:30",
+    "metadata": { "language_claimed": "es" }
+  },
+  {
+    "external_ref": "batch-008",
+    "customer": { "customer_id": "CUST-1007", "name": "John Doe", "email": "john.doe@example.com" },
+    "subject": "API webhook timeout on heavy load",
+    "description": "Our automated webhook listeners are timing out after 30 seconds when receiving bulk payload events during peak hours.",
+    "category": "Technical",
+    "priority": "Medium",
+    "channel": "api",
+    "created_at": "2026-07-25T08:30:00+05:30",
+    "metadata": { "endpoint": "/webhooks/v2" }
+  },
+  {
+    "external_ref": "batch-009",
+    "customer": { "customer_id": "CUST-1008", "name": "Karen Vance", "email": "karen.v@example.com" },
+    "subject": "Request for invoice PDF copy",
+    "description": "Could you please re-send the invoice PDF for transaction #88392 for tax accounting purposes?",
+    "category": "Billing",
+    "priority": "Low",
+    "channel": "email",
+    "created_at": "2026-07-25T08:35:00+05:30",
+    "metadata": {}
+  },
+  {
+    "external_ref": "batch-010",
+    "customer": { "customer_id": "CUST-1009", "name": "Liam Nelson", "email": "liam.n@example.com" },
+    "subject": "Security breach attempt detected on SSO",
+    "description": "URGENT: Suspicious unauthorized login attempts detected across multiple staff accounts via OAuth2 endpoint. Potential breach in progress!",
+    "category": "Security",
+    "priority": "High",
+    "channel": "api",
+    "created_at": "2026-07-25T08:40:00+05:30",
+    "metadata": { "threat_level": "Critical" }
+  },
+  {
+    "external_ref": "batch-011",
+    "customer": { "customer_id": "CUST-1010", "name": "Mia Taylor", "email": "mia.t@example.com" },
+    "subject": "Dark mode font contrast issue",
+    "description": "In the new dark theme, the secondary text labels in the settings screen are difficult to read due to low contrast ratio.",
+    "category": "UI/UX",
+    "priority": "Low",
+    "channel": "web_app",
+    "created_at": "2026-07-25T08:45:00+05:30",
+    "metadata": {}
+  },
+  {
+    "external_ref": "batch-012",
+    "customer": { "customer_id": "CUST-1011", "name": "Noah Williams", "email": "noah.w@example.com" },
+    "subject": "Export to CSV missing timestamps",
+    "description": "When exporting the monthly analytics report to CSV, the timestamp column is formatted as blank strings.",
+    "category": "Reporting",
+    "priority": "Medium",
+    "channel": "web_app",
+    "created_at": "2026-07-25T08:50:00+05:30",
+    "metadata": {}
+  },
+  {
+    "external_ref": "batch-013",
+    "customer": { "customer_id": "CUST-1012", "name": "Olivia Martinez", "email": "olivia.m@example.com" },
+    "subject": "Feature Request: Add SAML 2.0 support",
+    "description": "Our enterprise IT team requires SAML 2.0 Okta integration before we can roll out SwiftDesk to our 500 employees.",
+    "category": "Feature Request",
+    "priority": "Medium",
+    "channel": "web_app",
+    "created_at": "2026-07-25T08:55:00+05:30",
+    "metadata": {}
+  },
+  {
+    "external_ref": "batch-014",
+    "customer": { "customer_id": "CUST-1013", "name": "Patrick Stewart", "email": "patrick.s@example.com" },
+    "subject": "Fehler beim Herunterladen der Rechnung",
+    "description": "Guten Tag, das PDF-Dokument kann nicht heruntergeladen werden. Es wird immer 404 Not Found angezeigt.",
+    "category": "Billing",
+    "priority": "Low",
+    "channel": "web_app",
+    "created_at": "2026-07-25T09:00:00+05:30",
+    "metadata": { "language_claimed": "de" }
+  },
+  {
+    "external_ref": "batch-015",
+    "customer": { "customer_id": "CUST-1014", "name": "Quinn Fabray", "email": "quinn.f@example.com" },
+    "subject": "Payment gateway timeout during checkout",
+    "description": "Customers reporting checkout failures with error code 504 on payment gateway authorization step.",
+    "category": "Billing",
+    "priority": "High",
+    "channel": "web_app",
+    "created_at": "2026-07-25T09:05:00+05:30",
+    "metadata": {}
+  }
+]

@@ -1,0 +1,100 @@
+SwiftDesk — Support Ticket Automation & Routing System
+Final-round practical assessment  |  Duration: 4–5 hours  |  AI tools permitted
+1. Background
+SwiftDesk is a customer-support platform. Customers raise tickets through a web app. Each ticket has a description, category, priority and a few other fields. When the customer submits the form, the ticket is sent to our backend as a JSON payload over an API.
+Today a human reads every incoming ticket and manually decides who works on it — slow and inconsistent. Leadership wants an automation tool that receives the ticket, understands it, assigns it to the right support engineer automatically, keeps everyone informed by email, and gives the admin a live picture of everything. Build a small but working version of this system as a local web app.
+2. The three roles (three UIs)
+Role
+Who
+What they can do
+Customer UI
+Person raising the ticket
+Raise a ticket, see its status/history
+Support Team UI
+Engineers at L1 / L2 / L3
+See assigned tickets, pick eligible tickets, update status, resolve/close
+Admin Dashboard
+Operations manager
+See every ticket end-to-end, all analytics, workload, reassign
+
+3. Support levels & routing rules (core logic)
+Priority maps to a level:
+Ticket priority
+Target level
+Low
+L1
+Medium
+L2
+High
+L3
+
+Eligibility (pick-up) rules — the part we care about most:
+Agent level
+Can handle
+Cannot handle
+L1
+Low only
+Medium, High
+L2
+Medium and Low
+High
+L3
+Anything (High, Medium, Low)
+—
+
+In words: an L1 engineer can never pick an L2/L3 ticket; an L2 engineer can pick L2 or L1 but not L3; an L3 engineer can pick any ticket. Auto-assignment must respect these rules, load-balance across engineers, and you must decide + justify what happens when no eligible engineer is free (hold in queue vs escalate up).
+4. What the automation tool must do (workflow)
+Receive the ticket via the API (POST /api/tickets).
+Validate & analyze — read description/category/priority. The customer-supplied priority/category cannot always be trusted; analyze the description and decide the real priority/category (AI or keyword logic — reason about it).
+Determine level from resolved priority and auto-assign to an eligible, available engineer (rules + load balancing).
+Email: customer (“received & assigned” + short roadmap/next steps) and engineer (“new ticket assigned”).
+Engineer works it through a status lifecycle: New → Assigned → In Progress → Resolved → Closed.
+On resolution/closure → completion email to customer.
+Escalation: if not picked up/resolved within SLA, escalate to next level and notify.
+End of day → email the admin a stats summary.
+Email rule: every meaningful state change is communicated by email — assignment, resolution, escalation, daily admin summary. Email may be real (SMTP) or mocked (logged/saved) — but the trigger points must be correct.
+5. Admin dashboard (analytics)
+Full lifecycle visibility plus at least: totals by status / priority / category; tickets per level and per engineer (workload); average resolution time and SLA breaches/escalations; a filterable table with reassign; and the end-of-day stats that get emailed.
+6. Deliverables
+Your choice of language / framework / DB. Deliver:
+A runnable local web app (e.g. on http://localhost) — a reviewer must be able to run it locally, open the Customer UI, raise a ticket, and watch the tool auto-assign it and fire the emails.
+Automation service API that receives tickets and runs analyze → assign → notify.
+Assignment engine implementing the L1/L2/L3 rules + load balancing.
+Email notifications at the correct triggers (real SMTP or mocked/logged).
+Three interfaces — Customer, Support Team, Admin (minimal UI is fine; at least a working Admin dashboard).
+A data store with tickets / engineers / assignments / audit trail.
+A README (½–1 page): how to run it locally, key decisions, trade-offs, what you'd improve.
+7. Rules & constraints
+AI tools/libraries are allowed and expected.
+Section 3 rules are fixed — do not change them.
+Time-box 4–5 hrs — get ticket-in → assign → email working first, then add the dashboard.
+Keep an AI usage log (section 9).
+Be ready to run it live and answer follow-ups (e.g. “make this L1 agent unavailable — what happens to their tickets?”).
+8. How you will be evaluated
+Six areas; the three we weight most heavily are logical thinking, AI utilization & verification, and overall problem-solving.
+Correct routing & eligibility (the L1/L2/L3 rules behave exactly as specified).
+Deliberate edge-case handling (untrustworthy priority, duplicates, missing fields, no free agent).
+Good AI direction + verification — you catch the AI's mistakes.
+Correct notification triggers and a sound status lifecycle.
+Actionable admin analytics.
+Clear communication — you can explain and defend your design.
+9. AI usage log (required)
+Note what you asked AI to do, where it was wrong, and how you fixed it. Catching the AI's mistakes scores higher than pasting its output.
+10. Stretch goals
+Resolution suggestions from similar past tickets.
+Customer “not resolved” re-open flow.
+Real-time dashboard updates (websockets) instead of refresh.
+Role-based authentication for the three UIs.
+Appendix A — API contract
+Endpoint: POST /api/tickets
+Headers: Content-Type: application/json
+Success response (201):
+{  "status": "accepted",  "ticket_id": "TKT-100045",  "resolved_priority": "High",  "assigned_level": "L3",  "assigned_agent_id": "C-301",  "message": "Ticket received and assigned. A confirmation email has been sent."}
+Sample single payload the web app sends:
+{  "external_ref": "web-8f3a2c",  "customer": { "customer_id": "CUST-2041", "name": "Anita Sharma",                "email": "anita.sharma@example.com" },  "subject": "Charged twice for one order",  "description": "My payment was deducted twice for order #4471 ...",  "category": "Billing",  "priority": "High",  "channel": "web_app",  "created_at": "2026-07-20T09:14:33+05:30",  "metadata": { "app_version": "3.4.1", "platform": "Android 13" }}
+Appendix B — Provided files
+sample_data/ticket_payload_single.json — one example ticket the web app posts.
+sample_data/tickets_batch.json — a batch of 15 tickets to test your pipeline.
+sample_data/support_agents.json — your support team roster (L1/L2/L3, capacity, status).
+
+Hint: the sample data contains deliberate traps — a priority that does not match the text, a missing priority, a mis-categorised ticket, a duplicate, a vague one, and a non-English one. Part of the test is whether you catch them.

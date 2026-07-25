@@ -1,0 +1,204 @@
+# Design Testing Checklist
+1. Ticket Creation
+Valid ticket is accepted
+Invalid JSON is rejected
+Missing required fields return proper validation error
+Ticket ID is generated
+Status defaults to Open
+
+2. AI Classification
+AI verifies customer priority
+AI verifies customer category
+AI returns confidence score
+AI returns reasoning
+AI detects language
+AI normalizes non-English tickets
+Original values are preserved
+Resolved values are stored
+
+3. Hidden Trap Tests
+1.Wrong Priority
+Customer gives incorrect priority
+AI changes it correctly
+Audit log records the correction
+2.Missing Priority
+Null priority accepted
+AI infers priority
+Assignment uses inferred priority
+3.Wrong Category
+AI detects incorrect category
+Category corrected
+Audit log updated
+4.Duplicate Ticket
+Duplicate detected
+Duplicate flag/message shown
+Duplicate not assigned twice
+5.Vague Ticket
+Low confidence returned
+Manual review suggested (or appropriate handling)
+No over-confident classification
+6.Non-English Ticket
+Language detected
+Text normalized/translated internally
+Correct category determined
+Correct priority determined
+4. Assignment Engine
+Low Priority
+Assigned only to L1/L2/L3 eligible engineers
+Medium Priority
+Assigned only to L2/L3
+High Priority
+Assigned only to L3
+Least-loaded eligible engineer selected
+Capacity respected
+Availability respected
+5. Queue Handling
+Ticket queues if no eligible engineer
+Queue reason displayed
+Ticket assigned when engineer becomes available
+Queue status visible in dashboard
+6. Reassignment
+Admin can reassign ticket
+Eligible engineers displayed
+Current assignee excluded (if applicable)
+Workload updates after reassignment
+Audit log created
+Notification sent
+7. Ticket Lifecycle
+Open
+Assigned
+In Progress
+Waiting
+Resolved
+Closed
+Status changes saved
+Timeline updated
+8. Notifications
+
+Customer
+
+Ticket created
+Assignment email
+Resolution email
+
+Engineer
+
+Assignment notification
+Reassignment notification
+
+Admin
+
+Escalation notification
+Daily summary generated
+9. Dashboard
+Total tickets
+Open tickets
+Closed tickets
+Queued tickets
+SLA breaches
+Tickets by priority
+Tickets by category
+Engineer workload
+Average resolution time
+10. Support Dashboard
+Assigned tickets visible
+Eligible tickets visible
+Ticket details shown
+Filters work
+Search works
+11. Admin Dashboard
+All tickets visible
+Analytics displayed
+Reassignment works
+Engineer workload visible
+Capacity visible
+Availability visible
+12. API Validation
+POST /tickets works
+GET tickets works
+Update status works
+Reassign works
+Proper HTTP status codes returned
+Validation errors handled
+13. Database
+Ticket stored
+Customer stored
+Engineer stored
+Assignment stored
+Audit log stored
+AI analysis stored
+14. Scheduler
+Daily summary runs
+Escalation job runs
+Queued tickets rechecked
+SLA monitoring works
+15. Edge Cases
+Empty description
+Very long description
+Emoji in ticket
+Special characters
+Duplicate external_ref
+Same customer submits twice
+Engineer at full capacity
+No engineers available
+Invalid email
+Invalid priority value
+Invalid category value
+
+16. Customer UI
+Customer can raise a ticket
+Customer can see ticket status
+Customer can see ticket history
+Status/history updates after actions
+
+17. Support Team UI
+Assigned tickets are visible
+Eligible tickets are visible
+Support engineer can update status
+Support engineer can move ticket through lifecycle
+Support engineer can resolve and close tickets
+
+18. Admin Dashboard / Analytics
+All tickets visible end-to-end
+Totals by status visible
+Totals by priority visible
+Totals by category visible
+Tickets per level visible
+Tickets per engineer visible
+Average resolution time visible
+SLA breaches and escalations visible
+Filterable table available
+Reassign action available
+Queue visibility available
+
+19. Notifications / Emails
+Customer confirmation email sent on ticket create
+Customer email includes received, assigned, and next steps
+Engineer assignment email sent
+Engineer reassignment email sent
+Resolution email sent to customer
+Escalation email sent
+Daily admin summary email sent
+
+20. Routing / SLA / Queue
+Priority maps to correct level
+Eligibility rules are enforced exactly
+L3 can handle any ticket
+Load balancing picks the least-loaded eligible engineer
+Capacity limits are respected
+Availability limits are respected
+Queued ticket remains visible when no engineer is free
+Queued ticket is reassigned when capacity becomes available
+Escalation follows SLA when pickup or resolution is delayed
+
+21. Deliverables / Quality Gates
+Local web app runs successfully
+API endpoint POST /api/tickets works
+GET tickets works
+Status update works
+Reassign works
+Proper HTTP status codes returned
+Validation errors handled
+Ticket, customer, engineer, assignment, audit, and AI analysis are stored
+README explains setup, decisions, and trade-offs
+AI usage log is kept

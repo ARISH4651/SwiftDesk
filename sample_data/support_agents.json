@@ -1,0 +1,56 @@
+[
+  {
+    "agent_id": "C-101",
+    "name": "Alex Johnson",
+    "email": "alex.johnson@swiftdesk.com",
+    "level": "L1",
+    "is_available": true,
+    "max_capacity": 5,
+    "current_load": 0
+  },
+  {
+    "agent_id": "C-102",
+    "name": "Beth Smith",
+    "email": "beth.smith@swiftdesk.com",
+    "level": "L1",
+    "is_available": true,
+    "max_capacity": 5,
+    "current_load": 0
+  },
+  {
+    "agent_id": "C-201",
+    "name": "Carlos Rivera",
+    "email": "carlos.rivera@swiftdesk.com",
+    "level": "L2",
+    "is_available": true,
+    "max_capacity": 5,
+    "current_load": 0
+  },
+  {
+    "agent_id": "C-202",
+    "name": "Diana Prince",
+    "email": "diana.prince@swiftdesk.com",
+    "level": "L2",
+    "is_available": true,
+    "max_capacity": 5,
+    "current_load": 0
+  },
+  {
+    "agent_id": "C-301",
+    "name": "Evan Wright",
+    "email": "evan.wright@swiftdesk.com",
+    "level": "L3",
+    "is_available": true,
+    "max_capacity": 5,
+    "current_load": 0
+  },
+  {
+    "agent_id": "C-302",
+    "name": "Fiona Chen",
+    "email": "fiona.chen@swiftdesk.com",
+    "level": "L3",
+    "is_available": true,
+    "max_capacity": 5,
+    "current_load": 0
+  }
+]
