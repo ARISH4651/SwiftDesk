@@ -126,7 +126,6 @@ export default function AdminPortal() {
   const statusChartData = stats ? Object.entries(stats.status_counts).map(([name, value]) => ({ name, value })) : [];
   const priorityChartData = stats ? Object.entries(stats.priority_counts).map(([name, value]) => ({ name, value })) : [];
   const categoryChartData = stats ? Object.entries(stats.category_counts).map(([name, value]) => ({ name, value })) : [];
-  const reassignTicketDetails = reassignModal.ticketId ? tickets.find(t => t.ticket_id === reassignModal.ticketId) : null;
 
   return (
     <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '24px 16px' }}>
@@ -417,9 +416,7 @@ export default function AdminPortal() {
                 onChange={(e) => setReassignModal({ ...reassignModal, targetAgent: e.target.value })}
               >
                 <option value="">-- Choose Agent --</option>
-                {engineers
-                  .filter(e => e.agent_id !== reassignTicketDetails?.assigned_agent_id)
-                  .map(e => (
+                {engineers.map(e => (
                   <option key={e.agent_id} value={e.agent_id}>
                     {e.name} ({e.agent_id}) - Level {e.level} [{e.current_load}/{e.max_capacity}]
                   </option>
